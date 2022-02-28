@@ -1,9 +1,12 @@
-# This is a basic workflow to help you get started with Actions
-# And also a Template for all manufacturing belts
-
-# Template designed by: Admiral Zumi with help of Kaorfa JOELwindows7
-
-name: Template Manufacturing Belt
+name: Sparsdat kushview's Elements the comprehensive JUCE VST host
+# https://github.com/kushview/Element
+# Maintainer: Admiral Zumi, Lebuz Slappafali, JOELwindows7
+# Reason: The Binary file is paywalled & is subscription. 
+# Descriptions: see https://kushview.net/element/download/ then `Prebuilt Intaller`.
+# You can see in https://kushview.net/element/download/form/ , the buy only grants you 1 version 
+# & download link only lasts 14 days after buy. to always have latest version, you must subscribe to some sort of
+# Patreon. This is indeed adobe level of soul sucking.
+# Instruction sauce from https://github.com/kushview/Element/blob/master/docs/building.md
 
 # Controls when the workflow will run
 on:
@@ -49,56 +52,32 @@ jobs:
           pwd
           chmod +x ~/work/Sparsdator/Sparsdator/ShellScripts/setup_and_update.sh
           ~/work/Sparsdator/Sparsdator/ShellScripts/setup_and_update.sh
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
       
-      # Test something to do right here. maybe add file then insert something?
-      - name: Test Touch & Penetrate
-        run: |
-          pwd
-          ls
-          touch meNow.txt
-          echo 'Jack' > meNow.txt
-          cat meNow.txt
-      
-      # Now upload that creamed soes
-      - name: Upload a Build Artifact
-        uses: actions/upload-artifact@v2.3.1
-        with:
-          # Artifact name
-          name: Soes Cream
-          # A file, directory or wildcard pattern that describes what to upload
-          path: meNow.txt
-      
-      # Test Sparsdating! Clone now!
-      - name: Sparsdat a dummy
+      - name: Clone Kushview Element's source code
         run: |
           cd ~/SparsdatField
           pwd
-          git clone --recurse-submodules https://github.com/JOELwindows7/Hello-World.git
-          echo "Dummy build now"
-          echo "Dummy upload artifact"
+          git clone --recurse-submodules https://github.com/kushview/Element.git
           ls
       
-      # (IMPORTANT, configure this accordingly) watermark our name. copy 2 business card files into the build folder!
+      - name: Waf Script configure & build Element
+        run: |
+          cd ~/SparsdatField/Element
+          ls
+          pwd
+          ./waf configure
+          ./waf build
+          ./waf check
+      
       - name: Watermark our name
         run: |
-          cp ~/work/PressKit/X0P1R4T3_eenvreensment.md ~/SparsdatField/Hello-World
-          cp ~/work/PressKit/X0P1R4T3_eenvreensment.txt ~/SparsdatField/Hello-World
+          cp ~/work/PressKit/X0P1R4T3_eenvreensment.md ~/SparsdatField/Element/build
+          cp ~/work/PressKit/X0P1R4T3_eenvreensment.txt ~/SparsdatField/Element/build
       
-      # Test uploading artifact from the sparsdat
-      - name: Now upload everything we sparsdated!
+      - name: Artifact element
         uses: actions/upload-artifact@v2.3.1
         with:
           # Artifact name
-          name: Dummy Kuyha
+          name: KUSHVIEW-ELEMENT-DIRTY_REPACK-FULLVERSION-FREE-NO_VIRUS-NO_PASSWORD
           # A file, directory or wildcard pattern that describes what to upload
-          path: ~/SparsdatField/Hello-World
+          path: ~/SparsdatField/Element/build
