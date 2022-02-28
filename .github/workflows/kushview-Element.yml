@@ -86,6 +86,11 @@ jobs:
           ./waf configure
           ./waf build
       
+      - name: list Build folder. what does this contains now?
+          cd ~/SparsdatField/Element/build
+          pwd
+          ls -R -lh
+      
       - name: Watermark our name
         run: |
           cp ~/work/Sparsdator/Sparsdator/PressKit/X0P1R4T3_eenvreensment.md ~/SparsdatField/Element/build
