@@ -53,12 +53,29 @@ jobs:
           chmod +x ~/work/Sparsdator/Sparsdator/ShellScripts/setup_and_update.sh
           ~/work/Sparsdator/Sparsdator/ShellScripts/setup_and_update.sh
       
-      - name: Clone Kushview Element's source code
+      # (IMPORTANT) But wait! Start the cache first! To improve subsequent rebuild time yess.
+      - name: Cache Element da right now!
+        id: cache-da-right-now
+        uses: actions/cache@v2.1.7
+        with:
+          path: |
+            ~/SparsdatField/Element
+          key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
+      
+      - name: Clone Kushview Element's source code if haven't already
+        if: steps.cache-da-right-now.outputs.cache-hit != 'true'
         run: |
           cd ~/SparsdatField
           pwd
           git clone --recurse-submodules https://github.com/kushview/Element.git
           ls
+      
+      - name: Otherwise try update something
+        run: |
+          cd ~/SparsdatField/Element
+          pwd
+          ls
+          git pull origin
       
       - name: Waf Script configure & build Element
         run: |
@@ -70,13 +87,13 @@ jobs:
       
       - name: Watermark our name
         run: |
-          cp ~/work/PressKit/X0P1R4T3_eenvreensment.md ~/SparsdatField/Element/build
-          cp ~/work/PressKit/X0P1R4T3_eenvreensment.txt ~/SparsdatField/Element/build
+          cp ~/work/Sparsdator/Sparsdator/PressKit/X0P1R4T3_eenvreensment.md ~/SparsdatField/Element/build
+          cp ~/work/Sparsdator/Sparsdator/PressKit/X0P1R4T3_eenvreensment.txt ~/SparsdatField/Element/build
       
       - name: Artifact element
         uses: actions/upload-artifact@v2.3.1
         with:
           # Artifact name
-          name: KUSHVIEW-ELEMENT-DIRTY_REPACK-FULLVERSION-FREE-NO_VIRUS-NO_PASSWORD
+          name: KUSHVIEW-ELEMENT-DIRTY_REPACK-FULLVERSION-FREE-NO_VIRUS-NO_PASSWORD-GitHubAction
           # A file, directory or wildcard pattern that describes what to upload
           path: ~/SparsdatField/Element/build
