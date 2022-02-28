@@ -55,3 +55,5 @@ Licensor
 Adm. Zumi Rufthar Leksicorn  
 Licensee
 
+# Credit
+- https://cron.help/ Cron Helper. Help us build cron schedule that says every month on day one. like https://cron.help/#0_0_1_*_* . To make all manufacturing belts runs every single month.

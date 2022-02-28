@@ -16,6 +16,7 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
   
+  # Make every manufacturing belts runs this type of workflow every single month on day one
   schedule:
   - cron: "0 0 1 * *"
 
@@ -41,6 +42,16 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
       
+      # Update Everything
+      - name: Update everything pls
+        run: |
+          sudo apt update; sudo apt upgrade -y
+      
+      # install build essential
+      - name: Build Essentials Please!
+        run: |
+          sudo apt install build-essential gcc g++ -y
+      
       # Test something to do right here. maybe add file then insert something?
       - name: Test Touch & Penetrate
         run: |
@@ -58,3 +69,13 @@ jobs:
           name: Soes Cream
           # A file, directory or wildcard pattern that describes what to upload
           path: meNow.txt
+      
+      # Test Sparsdating! Clone now!
+      - name: Sparsdat a dummy
+        run: |
+          mkdir -p ~/SparsdatField
+          cd ~/SparsdateField
+          pwd
+          gh repo clone JOELwindows7/Hello-World
+          echo "Dummy build now"
+          echo "Dummy upload artifact"
