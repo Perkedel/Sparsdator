@@ -91,8 +91,8 @@ jobs:
       # (IMPORTANT, configure this accordingly) watermark our name. copy 2 business card files into the build folder!
       - name: Watermark our name
         run: |
-          cp ~/work/PressKit/X0P1R4T3_eenvreensment.md ~/SparsdatField/Hello-World
-          cp ~/work/PressKit/X0P1R4T3_eenvreensment.txt ~/SparsdatField/Hello-World
+          cp ~/work/Sparsdator/Sparsdator/PressKit/X0P1R4T3_eenvreensment.md ~/SparsdatField/Hello-World
+          cp ~/work/Sparsdator/Sparsdator/PressKit/X0P1R4T3_eenvreensment.txt ~/SparsdatField/Hello-World
       
       # Test uploading artifact from the sparsdat
       - name: Now upload everything we sparsdated!
