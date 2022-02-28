@@ -1,0 +1,8 @@
+# (IMPORTANT) But wait! Start the cache first! To improve subsequent rebuild time yess.
+      - name: Cache da right now!
+        id: cache-da-right-now
+        uses: actions/cache@v2.1.7
+        with:
+          path: |
+            ~/SparsdatField
+          key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
