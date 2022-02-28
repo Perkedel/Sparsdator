@@ -74,7 +74,7 @@ jobs:
       - name: Sparsdat a dummy
         run: |
           mkdir -p ~/SparsdatField
-          cd ~/SparsdateField
+          cd ~/SparsdatField
           pwd
           gh repo clone JOELwindows7/Hello-World
           echo "Dummy build now"
