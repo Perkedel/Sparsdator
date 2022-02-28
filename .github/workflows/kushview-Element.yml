@@ -71,6 +71,7 @@ jobs:
           ls
       
       - name: Otherwise try update something
+        if: steps.cache-da-right-now.outputs.cache-hit == 'true'
         run: |
           cd ~/SparsdatField/Element
           pwd
