@@ -67,7 +67,6 @@ jobs:
           pwd
           ./waf configure
           ./waf build
-          ./waf check
       
       - name: Watermark our name
         run: |
