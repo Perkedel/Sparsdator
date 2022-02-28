@@ -33,9 +33,15 @@ Admiral Zumi's factory
 This repository is reserved for use of manufacturing facility under the government of X0p1r4t3 Eenvreensment. It essentially contains scripts for automated rendering & manufacturing system, popular amongst software developer. 
 
 # Rules
-- Only softwares licensed under free culture, especially one that permits build & spread, are allowed. e.g. GNU GPL series.
+- Only softwares licensed under free culture, especially one that permits build & spread, are allowed. e.g. ones that licensed GNU GPL series.
 - Do not change the content of the software source code unless you shared that fork & explicitly state where sauce of the edit.
 - Explicitly state where to get sauce for blobs complete with the installation instruction if the software needs to be rendered with blob both open source & proprietary.
+- Be sure to avoid any Free Culture licensed project that already has particular format of CI. Prioritize projects that has:
+  - No Binary release
+  - Unreliable CI all the time
+  - Different format of CI (only consider this if the format is primitive & complicated, OR privated CI page)
+  - **Paywalled binary on any of the platform target**
+  - explicitly want redundant CI in case that git site got troubled.
 
 # Authorizations
 I, Joel Robert Justiawan, Kaorfa for all things in this Cinematic Universe hereby approve:

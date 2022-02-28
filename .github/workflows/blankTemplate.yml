@@ -20,6 +20,9 @@ on:
   schedule:
   - cron: "0 0 1 * *"
 
+env:
+  UPDATE: ~/work/Sparsdator/Sparsdator/ShellScripts/setup_and_update.sh
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -29,8 +32,37 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      # (IMPORTANT) Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+
+      # (IMPORTANT) Prepare SparsdatField Folder!
+      - name: Prepare Manufacturing Tray
+        run: |
+          mkdir -p ~/SparsdatField
+          pwd ~
+          ls ~
+
+      # (IMPORTANT) But wait! Start the cache first! To improve subsequent rebuild time yess.
+      - name: Cache da right now!
+        id: cache-da-right-now
+        uses: actions/cache@v2.1.7
+        with:
+          path: |
+            ~/SparsdatField
+      
+      # (IMPORTANT) Update Everything
+      - name: Update everything pls
+        run: |
+          sudo apt update && sudo apt upgrade -y
+      
+      # (IMPORTANT) install build essential
+      - name: Build Essentials Please!
+        run: |
+          sudo apt install build-essential gcc g++ clang -y
+          sudo apt install python pkg-config libboost-dev libfreetype6-dev \
+          libx11-dev libxext-dev libxrandr-dev libxcomposite-dev libxinerama-dev \
+          libxcursor-dev libasound2-dev lv2-dev liblilv-dev libsuil-dev ladspa-sdk \
+          libcurl4-openssl-dev fonts-roboto -y
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
@@ -41,16 +73,6 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-      
-      # Update Everything
-      - name: Update everything pls
-        run: |
-          sudo apt update && sudo apt upgrade -y
-      
-      # install build essential
-      - name: Build Essentials Please!
-        run: |
-          sudo apt install build-essential gcc g++ -y
       
       # Test something to do right here. maybe add file then insert something?
       - name: Test Touch & Penetrate
@@ -73,7 +95,6 @@ jobs:
       # Test Sparsdating! Clone now!
       - name: Sparsdat a dummy
         run: |
-          mkdir -p ~/SparsdatField
           cd ~/SparsdatField
           pwd
           git clone --recurse-submodules https://github.com/JOELwindows7/Hello-World.git
