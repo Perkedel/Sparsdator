@@ -118,7 +118,7 @@ jobs:
           cd ~/SparsdatField/Element/tools/jucer/ElementFX
           ls
           pwd
-          ~/Cranes/JUCE/Projucer --resave ./ElemenFX.jucer
+          ~/Cranes/JUCE/Projucer --resave ./ElementFX.jucer
           echo "Resave Element MFX"
           cd ~/SparsdatField/Element/tools/jucer/ElementMFX
           ls
