@@ -102,7 +102,9 @@ jobs:
           ls -lh
           pwd
           unzip ./juce-$JUCE_VERSION-linux.zip
-          mv juce-$JUCE_VERSION-linux/JUCE ~/Cranes/
+          ls -lh
+          pwd
+          mv ./JUCE ~/Cranes/
       
       # instruction here https://forum.juce.com/t/command-line-options/20343/2?u=joelwindows7
       - name: And then resave all 3 Projucer projects!
