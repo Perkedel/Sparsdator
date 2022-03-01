@@ -25,6 +25,7 @@ on:
 
 env:
   UPDATE: ~/work/Sparsdator/Sparsdator/ShellScripts/setup_and_update.sh
+  JUCE_VERSION: "6.1.6"
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -85,6 +86,41 @@ jobs:
           pwd
           ./waf configure
           ./waf build
+
+      # ah peck! where are the VST3 variants?!?!?!?!?
+      - name: Okay, maybe we should download Projucer?
+        run: |
+        mkdir -p ~/Cranes
+        echo "Downloading Projucer. Don't install from sudo apt install juce-tools! that's old!"
+        cd ~/Downloads
+        wget https://api.juce.com/api/v1/download/juce/latest/linux
+        echo "Installing Projucer"
+        unzip juce-$JUCE_VERSION-linux.zip
+        mv juce-$JUCE_VERSION-linux/JUCE ~/Cranes/
+      
+      # instruction here https://forum.juce.com/t/command-line-options/20343/2?u=joelwindows7
+      - name: And then resave all 3 Projucer projects!
+        run: |
+          echo "Resave Element"
+          cd ~/SparsdatField/Element/tools/jucer/Element
+          ls
+          pwd
+          ~/Cranes/JUCE/bin/jucer --resave ./Element.jucer
+          echo "Resave Element Effect"
+          cd ~/SparsdatField/Element/tools/jucer/ElementFX
+          ls
+          pwd
+          ~/Cranes/JUCE/bin/jucer --resave ./ElemenFXt.jucer
+          echo "Resave Element MFX"
+          cd ~/SparsdatField/Element/tools/jucer/ElementMFX
+          ls
+          pwd
+          ~/Cranes/JUCE/bin/jucer --resave ./ElementMFX.jucer
+          echo "Resave Element Standalone"
+          cd ~/SparsdatField/Element/tools/jucer/Standalone
+          ls
+          pwd
+          ~/Cranes/JUCE/bin/jucer --resave ./Element.jucer
       
       - name: list Build folder. what does this contains now?
         run: |
@@ -102,5 +138,35 @@ jobs:
         with:
           # Artifact name
           name: KUSHVIEW-ELEMENT-DIRTY_REPACK-FULLVERSION-FREE-NO_VIRUS-NO_PASSWORD-GitHubAction
+          # A file, directory or wildcard pattern that describes what to upload
+          path: ~/SparsdatField/Element/build
+    
+      # Okay fine, start again from scratch. make the AppImage?
+      - name: Build AppImage
+        run: |
+          cd ~/SparsdatField/Element/
+          pwd
+          ls
+          echo "First, makesure all sh files are executable"
+          echo "https://phoenixnap.com/kb/chmod-recursive"
+          find . -name "*.sh" -exec chmod +x {} \;
+          ./tools/buildall_linux.sh
+
+      - name: list Build folder again. what does this contains now?
+        run: |
+          cd ~/SparsdatField/Element/build
+          pwd
+          ls -R -lh
+      
+      - name: Watermark our name again because the build all linux sh deleted everything build folder!
+        run: |
+          cp ~/work/Sparsdator/Sparsdator/PressKit/X0P1R4T3_eenvreensment.md ~/SparsdatField/Element/build
+          cp ~/work/Sparsdator/Sparsdator/PressKit/X0P1R4T3_eenvreensment.txt ~/SparsdatField/Element/build
+      
+      - name: Artifact element again
+        uses: actions/upload-artifact@v2.3.1
+        with:
+          # Artifact name
+          name: KUSHVIEW-ELEMENT-APPIMAGE-FULLVERSION-FREE-NO_VIRUS-NO_PASSWORD-GitHubAction
           # A file, directory or wildcard pattern that describes what to upload
           path: ~/SparsdatField/Element/build
