@@ -87,6 +87,7 @@ jobs:
           ./waf build
       
       - name: list Build folder. what does this contains now?
+        run: |
           cd ~/SparsdatField/Element/build
           pwd
           ls -R -lh
