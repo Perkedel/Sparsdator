@@ -17,6 +17,7 @@ name: Sparsdat Ardour also for Windows & maybe others because kx.studio did not 
 # https://newbedev.com/how-do-i-invoke-the-mingw-cross-compiler-on-linux
 # https://ardour.org/building_linux.html
 # https://ardour.org/development.html
+# https://ubuntuforums.org/showthread.php?t=2305832
 
 # Controls when the workflow will run
 on:

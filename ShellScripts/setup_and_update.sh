@@ -16,3 +16,5 @@ sudo apt-get install libao-dev libmpg123-dev -y
 sudo apt-get install binutils-mingw-w64 binutils-mingw-w64-i686 binutils-mingw-w64-x86-64 gcc-mingw-w64 gcc-mingw-w64-i686 gcc-mingw-w64-x86-64 g++-mingw-w64 mingw-w64 g++-mingw-w64-x86-64 g++-mingw-w64-i686 mingw-w64-common mingw-w64-x86-64-dev -y
 # https://ubuntuforums.org/showthread.php?t=2305832
 sudo apt-get install libglibmm-2.4-dev libglibmm-2.4-1v5 libgtkglext1-dev libgtkglextmm-x11-1.2-dev -y
+# https://zoomadmin.com/HowToInstall/UbuntuPackage/libsndfile-dev
+sudo apt-get install -y libsndfile-dev
