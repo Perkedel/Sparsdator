@@ -113,22 +113,22 @@ jobs:
           cd ~/SparsdatField/Element/tools/jucer/Element
           ls
           pwd
-          ~/Cranes/JUCE/bin/jucer --resave ./Element.jucer
+          ~/Cranes/JUCE/Projucer --resave ./Element.jucer
           echo "Resave Element Effect"
           cd ~/SparsdatField/Element/tools/jucer/ElementFX
           ls
           pwd
-          ~/Cranes/JUCE/bin/jucer --resave ./ElemenFXt.jucer
+          ~/Cranes/JUCE/Projucer --resave ./ElemenFXt.jucer
           echo "Resave Element MFX"
           cd ~/SparsdatField/Element/tools/jucer/ElementMFX
           ls
           pwd
-          ~/Cranes/JUCE/bin/jucer --resave ./ElementMFX.jucer
+          ~/Cranes/JUCE/Projucer --resave ./ElementMFX.jucer
           echo "Resave Element Standalone"
           cd ~/SparsdatField/Element/tools/jucer/Standalone
           ls
           pwd
-          ~/Cranes/JUCE/bin/jucer --resave ./Element.jucer
+          ~/Cranes/JUCE/Projucer --resave ./Element.jucer
       
       - name: list Build folder. what does this contains now?
         run: |
