@@ -1,6 +1,6 @@
 sudo apt update
 sudo apt upgrade -y
-sudo apt install build-essential gcc g++ clang -y
+sudo apt install build-essential cmake gcc g++ clang -y
 sudo apt install python pkg-config libboost-dev libfreetype6-dev libx11-dev libxext-dev libxrandr-dev libxcomposite-dev libxinerama-dev libxcursor-dev libasound2-dev lv2-dev liblilv-dev libsuil-dev ladspa-sdk libcurl4-openssl-dev fonts-roboto -y
 sudo apt install zip p7zip-full -y # https://www.linuxfordevices.com/tutorials/ubuntu/7zip-files-on-ubuntu
 sudo apt install libc6 libjack-dev libpulse-dev -y
@@ -23,3 +23,4 @@ sudo apt build-dep ardour -y
 sudo apt build-dep tmux -y
 sudo apt build-dep juce-tools -y
 sudo apt-get install -y checkinstall
+sudo apt install libarchive libarchive-dev bison libvorbis pango readline termcap libsamplerate libogg -y
