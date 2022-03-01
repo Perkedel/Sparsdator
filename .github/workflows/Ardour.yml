@@ -13,6 +13,10 @@ name: Sparsdat Ardour also for Windows & maybe others because kx.studio did not 
 # https://discourse.ardour.org/t/windows-cross-build/99794/8
 # https://discourse.ardour.org/t/i-want-to-be-part-of-it/103018
 # https://discourse.ardour.org/t/is-open-source-a-diversion-from-what-users-really-want/102665/102
+# https://discourse.ardour.org/t/i-want-to-be-part-of-it/103018/2
+# https://newbedev.com/how-do-i-invoke-the-mingw-cross-compiler-on-linux
+# https://ardour.org/building_linux.html
+# https://ardour.org/development.html
 
 # Controls when the workflow will run
 on:
@@ -65,49 +69,45 @@ jobs:
         with:
           platform: x64
       
-      - name: Then set everything MinGW up
+      - name: Now, clone Ardour!
         run: |
-          mingw
-          pacman -Syu
-          exit
-          mingw
-          pacman -Su
-          exit
-          mingw
+          cd ~/SparsdatField
+          git clone --recurse-submodules -b master git://github.com/ardour/ardour.git
+          cd ardour
+          ls -R -lh
       
-      - name: Install MinGW packages now!
+      - name: Try build it usually
         run: |
-          mingw
-          echo "Begin Installation of packages now"
-          pacman -S \
-          mingw-w64-x86_64-toolchain \
-          python3 \
-          python3-setuptools \
-          mingw-w64-x86_64-python3 \
-          mingw-w64-x86_64-python3-setuptools \
-          python2 \
-          python2-setuptools \
-          pkg-config \
-          mingw-w64-x86_64-pkg-config \
-          autoconf \
-          automake \
-          perl \
-          gtk-doc \
-          flex \
-          bison \
-          patch \
-          libtool \
-          mingw-w64-x86_64-libtool \
-          wget \
-          git \
-          nasm \
-          mingw-w64-x86_64-nasm \
-          dos2unix \
-          mingw-w64-x86_64-cmake
+           cd ~/SparsdatField/ardour
+           ./waf configure
+           ./waf
+
+      - name: Immediately Build the Ardour targeting minGW
+        run: |
+          cd ~/SparsdatField/ardour
+          export CFLAGS="-mstackrealign -mxsave -mmmx -msse"
+          export CPPFLAGS="-mstackrealign -mxsave -mmmx -msse"
+          echo "Patches!"
+          sed -i 's/#!\/usr\/bin\/env python/#!\/usr\/bin\/env python2/' waf
+          sed -i 's/Libs: -L${libdir} -larchive/Libs: -L${libdir} -larchive -lbcrypt/' /mingw64/lib/pkgconfig/libarchive.pc
+          ./waf configure --dist-target=mingw --ptformat --optimize --windows-vst --with-backends=jack,portaudio,dummy
+          ./waf
       
-      - name: Dependencies Too!
+      - name: Now package the Ardour
         run: |
-          mingw
+          cd ~/SparsdatField/ardour/tools/linux_packaging
+          ./build --public --strip some
+          ./package --public --singlearch
+          ls -lh -R
+          pwd
+      
+      # find where's the tar file!
+      - name: Index everything
+        run: |
+          cd ~/SparsdatField/ardour
+          ls -R -lh
+          pwd
+
 
       
 

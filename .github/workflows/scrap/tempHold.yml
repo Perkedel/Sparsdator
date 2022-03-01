@@ -37,3 +37,47 @@
           name: KUSHVIEW-ELEMENT-APPIMAGE-FULLVERSION-FREE-NO_VIRUS-NO_PASSWORD-GitHubAction
           # A file, directory or wildcard pattern that describes what to upload
           path: ~/SparsdatField/Element/build
+
+      - name: Then set everything MinGW up
+        run: |
+          mingw
+          pacman -Syu
+          exit
+          mingw
+          pacman -Su
+          exit
+          mingw
+      
+      - name: Install MinGW packages now!
+        run: |
+          mingw
+          echo "Begin Installation of packages now"
+          pacman -S \
+          mingw-w64-x86_64-toolchain \
+          python3 \
+          python3-setuptools \
+          mingw-w64-x86_64-python3 \
+          mingw-w64-x86_64-python3-setuptools \
+          python2 \
+          python2-setuptools \
+          pkg-config \
+          mingw-w64-x86_64-pkg-config \
+          autoconf \
+          automake \
+          perl \
+          gtk-doc \
+          flex \
+          bison \
+          patch \
+          libtool \
+          mingw-w64-x86_64-libtool \
+          wget \
+          git \
+          nasm \
+          mingw-w64-x86_64-nasm \
+          dos2unix \
+          mingw-w64-x86_64-cmake
+      
+      - name: Dependencies Too!
+        run: |
+          mingw
