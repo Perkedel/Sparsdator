@@ -95,9 +95,10 @@ jobs:
           echo "Downloading Projucer. Don't install from sudo apt install juce-tools! that's old!"
           mkdir -p ~/Downloads
           cd ~/Downloads
-          wget https://api.juce.com/api/v1/download/juce/latest/linux
+          wget https://api.juce.com/api/v1/download/juce/latest/linux --output-file=juce-$JUCE_VERSION-linux.zip
+          echo "lol why the peck filenamed linux?"
           echo "Installing Projucer"
-          ls
+          ls -lh
           pwd
           unzip ./juce-$JUCE_VERSION-linux.zip
           mv juce-$JUCE_VERSION-linux/JUCE ~/Cranes/
