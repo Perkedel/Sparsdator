@@ -23,4 +23,4 @@ sudo apt build-dep ardour -y
 sudo apt build-dep tmux -y
 sudo apt build-dep juce-tools -y
 sudo apt-get install -y checkinstall
-sudo apt install libarchive libarchive-dev bison libvorbis pango readline termcap libsamplerate libogg -y
+sudo apt install libarchive-dev libvorbis-dev bison pango1.0-tools libsdl-pango-dev libreadline-dev libncurses5-dev libsamplerate0-dev libsamplerate-ocaml-dev libogg-dev -y
