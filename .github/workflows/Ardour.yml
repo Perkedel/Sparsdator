@@ -79,9 +79,9 @@ jobs:
       
       - name: Try build it usually
         run: |
-           cd ~/SparsdatField/ardour
-           ./waf configure
-           ./waf
+          cd ~/SparsdatField/ardour
+          ./waf configure
+          ./waf
 
       - name: Immediately Build the Ardour targeting minGW
         run: |

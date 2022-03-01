@@ -18,3 +18,8 @@ sudo apt-get install binutils-mingw-w64 binutils-mingw-w64-i686 binutils-mingw-w
 sudo apt-get install libglibmm-2.4-dev libglibmm-2.4-1v5 libgtkglext1-dev libgtkglextmm-x11-1.2-dev -y
 # https://zoomadmin.com/HowToInstall/UbuntuPackage/libsndfile-dev
 sudo apt-get install -y libsndfile-dev
+# https://wbk.one/article/42a272c3/apt-get-build-dep-to-install-build-deps
+sudo apt build-dep ardour -y
+sudo apt build-dep tmux -y
+sudo apt build-dep juce-tools -y
+sudo apt-get install -y checkinstall
