@@ -1,0 +1,113 @@
+name: Sparsdat Ardour also for Windows & maybe others because kx.studio did not help those users, hopefully they forgot.
+
+# Here links
+# https://www.youtube.com/watch?v=B66VtJBN2N0
+# https://kx.studio/Repositories
+# https://ardour.org
+# https://community.ardour.org/download
+# https://github.com/Ardour/ardour
+# https://musicsecrets.euniversity.pub/ardour.html
+# https://discourse.ardour.org/t/windows-native-compilation/102360/12 TOXIC
+# https://discourse.ardour.org/t/how-to-build-ardour-for-windows/106209
+# https://discourse.ardour.org/t/ardour-cross-compiling-in-linux-for-windows/104604
+# https://discourse.ardour.org/t/windows-cross-build/99794/8
+# https://discourse.ardour.org/t/i-want-to-be-part-of-it/103018
+# https://discourse.ardour.org/t/is-open-source-a-diversion-from-what-users-really-want/102665/102
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+  
+  # Make every manufacturing belts runs this type of workflow every single month on day one
+  schedule:
+  - cron: "0 0 1 * *"
+
+env:
+  UPDATE: ~/work/Sparsdator/Sparsdator/ShellScripts/setup_and_update.sh
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # (IMPORTANT) Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      # (IMPORTANT) Prepare SparsdatField Folder!
+      - name: Prepare Manufacturing Tray
+        run: |
+          mkdir -p ~/SparsdatField
+          pwd ~
+          ls ~
+      
+      # (IMPORTANT) Update Everything & setup another stuffs matter
+      - name: Update everything pls! Setup Essentials too!
+        run: |
+          ls
+          pwd
+          chmod +x ~/work/Sparsdator/Sparsdator/ShellScripts/setup_and_update.sh
+          ~/work/Sparsdator/Sparsdator/ShellScripts/setup_and_update.sh
+      
+      # Perhaps we need uh MinGW
+      - name: Install MinGW
+        uses: egor-tensin/setup-mingw@v2
+        with:
+          platform: x64
+      
+      - name: Then set everything MinGW up
+        run: |
+          mingw
+          pacman -Syu
+          exit
+          mingw
+          pacman -Su
+          exit
+          mingw
+      
+      - name: Install MinGW packages now!
+        run: |
+          mingw
+          echo "Begin Installation of packages now"
+          pacman -S \
+          mingw-w64-x86_64-toolchain \
+          python3 \
+          python3-setuptools \
+          mingw-w64-x86_64-python3 \
+          mingw-w64-x86_64-python3-setuptools \
+          python2 \
+          python2-setuptools \
+          pkg-config \
+          mingw-w64-x86_64-pkg-config \
+          autoconf \
+          automake \
+          perl \
+          gtk-doc \
+          flex \
+          bison \
+          patch \
+          libtool \
+          mingw-w64-x86_64-libtool \
+          wget \
+          git \
+          nasm \
+          mingw-w64-x86_64-nasm \
+          dos2unix \
+          mingw-w64-x86_64-cmake
+      
+      - name: Dependencies Too!
+        run: |
+          mingw
+
+      
+

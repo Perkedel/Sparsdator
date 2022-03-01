@@ -107,7 +107,7 @@ jobs:
           mv ./JUCE ~/Cranes/
           ls -R -lh ~/Cranes/JUCE
           echo "Okay fine, I guess we need that old JUCE anyways because it may happen to have VST2 SDK in it?"
-          sudo apt install juce-tools -y
+          # sudo apt install juce-tools -y
           echo "It says that one is 5.2.1 according to comment on https://askubuntu.com/q/1279983/64076"
           echo "but the VST wrapper says you can use either that old SDK or JUCE 5.3.2 idk. This might still not work."
           echo "I hate you Steinberg! f888888 hell!! Noob gamer move!!!"
@@ -155,32 +155,4 @@ jobs:
           # A file, directory or wildcard pattern that describes what to upload
           path: ~/SparsdatField/Element/build
     
-      # Okay fine, start again from scratch. make the AppImage?
-      - name: Build AppImage
-        run: |
-          cd ~/SparsdatField/Element/
-          pwd
-          ls
-          echo "First, makesure all sh files are executable"
-          echo "https://phoenixnap.com/kb/chmod-recursive"
-          find . -name "*.sh" -exec chmod +x {} \;
-          ./tools/buildall-linux.sh
-
-      - name: list Build folder again. what does this contains now?
-        run: |
-          cd ~/SparsdatField/Element/build
-          pwd
-          ls -R -lh
       
-      - name: Watermark our name again because the build all linux sh deleted everything build folder!
-        run: |
-          cp ~/work/Sparsdator/Sparsdator/PressKit/X0P1R4T3_eenvreensment.md ~/SparsdatField/Element/build
-          cp ~/work/Sparsdator/Sparsdator/PressKit/X0P1R4T3_eenvreensment.txt ~/SparsdatField/Element/build
-      
-      - name: Artifact element again
-        uses: actions/upload-artifact@v2.3.1
-        with:
-          # Artifact name
-          name: KUSHVIEW-ELEMENT-APPIMAGE-FULLVERSION-FREE-NO_VIRUS-NO_PASSWORD-GitHubAction
-          # A file, directory or wildcard pattern that describes what to upload
-          path: ~/SparsdatField/Element/build

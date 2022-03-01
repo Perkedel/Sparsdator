@@ -8,6 +8,9 @@ sudo apt install lua lua-ansicolors lua-any lua-apr lua-apr-dev lua-apr-dev lua-
 # ah so long
 # You need OpenGL development packages too!
 # https://medium.com/geekculture/a-beginners-guide-to-setup-opengl-in-linux-debian-2bfe02ccd1e
-sudo apt-get install mesa-utils libglu1-mesa-dev freeglut3-dev mesa-common-dev
-sudo apt-get install libglew-dev libglfw3-dev libglm-dev
-sudo apt-get install libao-dev libmpg123-dev
+sudo apt-get install mesa-utils libglu1-mesa-dev freeglut3-dev mesa-common-dev -y
+sudo apt-get install libglew-dev libglfw3-dev libglm-dev -y
+sudo apt-get install libao-dev libmpg123-dev -y
+# https://stackoverflow.com/a/44390021/9079640
+# https://askubuntu.com/a/705385/64076
+sudo apt-get install binutils-mingw-w64 binutils-mingw-w64-i686 binutils-mingw-w64-x86-64 gcc-mingw-w64 gcc-mingw-w64-i686 gcc-mingw-w64-x86-64 g++-mingw-w64 mingw-w64 g++-mingw-w64-x86-64 g++-mingw-w64-i686 mingw-w64-common mingw-w64-x86-64-dev mingw32 mingw32-binutils mingw32-runtime -y
