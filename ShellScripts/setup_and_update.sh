@@ -13,4 +13,4 @@ sudo apt-get install libglew-dev libglfw3-dev libglm-dev -y
 sudo apt-get install libao-dev libmpg123-dev -y
 # https://stackoverflow.com/a/44390021/9079640
 # https://askubuntu.com/a/705385/64076
-sudo apt-get install binutils-mingw-w64 binutils-mingw-w64-i686 binutils-mingw-w64-x86-64 gcc-mingw-w64 gcc-mingw-w64-i686 gcc-mingw-w64-x86-64 g++-mingw-w64 mingw-w64 g++-mingw-w64-x86-64 g++-mingw-w64-i686 mingw-w64-common mingw-w64-x86-64-dev mingw32 mingw32-binutils mingw32-runtime -y
+sudo apt-get install binutils-mingw-w64 binutils-mingw-w64-i686 binutils-mingw-w64-x86-64 gcc-mingw-w64 gcc-mingw-w64-i686 gcc-mingw-w64-x86-64 g++-mingw-w64 mingw-w64 g++-mingw-w64-x86-64 g++-mingw-w64-i686 mingw-w64-common mingw-w64-x86-64-dev -y
