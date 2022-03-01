@@ -158,7 +158,7 @@ jobs:
           echo "First, makesure all sh files are executable"
           echo "https://phoenixnap.com/kb/chmod-recursive"
           find . -name "*.sh" -exec chmod +x {} \;
-          ./tools/buildall_linux.sh
+          ./tools/buildall-linux.sh
 
       - name: list Build folder again. what does this contains now?
         run: |
