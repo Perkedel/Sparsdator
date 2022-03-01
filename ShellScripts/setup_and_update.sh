@@ -19,8 +19,8 @@ sudo apt-get install libglibmm-2.4-dev libglibmm-2.4-1v5 libgtkglext1-dev libgtk
 # https://zoomadmin.com/HowToInstall/UbuntuPackage/libsndfile-dev
 sudo apt-get install -y libsndfile-dev
 # https://wbk.one/article/42a272c3/apt-get-build-dep-to-install-build-deps
-sudo apt build-dep ardour -y
+sudo apt install ardour -y
 sudo apt build-dep tmux -y
 sudo apt build-dep juce-tools -y
 sudo apt-get install -y checkinstall
-sudo apt install libarchive-dev libvorbis-dev bison pango1.0-tools libsdl-pango-dev libreadline-dev libncurses5-dev libsamplerate0-dev libsamplerate-ocaml-dev libogg-dev -y
+sudo apt install liblo-tools libarchive-dev libvorbis-dev bison pango1.0-tools libsdl-pango-dev libreadline-dev libncurses5-dev libsamplerate0-dev libsamplerate-ocaml-dev libogg-dev -y
