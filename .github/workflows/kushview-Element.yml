@@ -90,13 +90,13 @@ jobs:
       # ah peck! where are the VST3 variants?!?!?!?!?
       - name: Okay, maybe we should download Projucer?
         run: |
-        mkdir -p ~/Cranes
-        echo "Downloading Projucer. Don't install from sudo apt install juce-tools! that's old!"
-        cd ~/Downloads
-        wget https://api.juce.com/api/v1/download/juce/latest/linux
-        echo "Installing Projucer"
-        unzip juce-$JUCE_VERSION-linux.zip
-        mv juce-$JUCE_VERSION-linux/JUCE ~/Cranes/
+          mkdir -p ~/Cranes
+          echo "Downloading Projucer. Don't install from sudo apt install juce-tools! that's old!"
+          cd ~/Downloads
+          wget https://api.juce.com/api/v1/download/juce/latest/linux
+          echo "Installing Projucer"
+          unzip juce-$JUCE_VERSION-linux.zip
+          mv juce-$JUCE_VERSION-linux/JUCE ~/Cranes/
       
       # instruction here https://forum.juce.com/t/command-line-options/20343/2?u=joelwindows7
       - name: And then resave all 3 Projucer projects!
