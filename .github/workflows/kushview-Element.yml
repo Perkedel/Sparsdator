@@ -90,8 +90,10 @@ jobs:
       # ah peck! where are the VST3 variants?!?!?!?!?
       - name: Okay, maybe we should download Projucer?
         run: |
+          ls ~
           mkdir -p ~/Cranes
           echo "Downloading Projucer. Don't install from sudo apt install juce-tools! that's old!"
+          mkdir -p ~/Downloads
           cd ~/Downloads
           wget https://api.juce.com/api/v1/download/juce/latest/linux
           echo "Installing Projucer"
